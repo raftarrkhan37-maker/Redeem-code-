@@ -585,7 +585,6 @@
       <div class="video-box">
         <video
           controls
-          controlsList="nodownload noremoteplayback noplaybackrate"
           disablePictureInPicture
           oncontextmenu="return false;"
           ondragstart="return false;"
@@ -655,10 +654,6 @@
       video.volume = 1.0;
       video.addEventListener('contextmenu', e => e.preventDefault());
       video.addEventListener('dragstart', e => e.preventDefault());
-      video.addEventListener('loadedmetadata', () => {
-        // Extra protection layer
-        video.setAttribute('controlsList', 'nodownload noremoteplayback noplaybackrate');
-      });
 
       let playAttempted = false;
       const attemptPlay = () => {
@@ -1081,7 +1076,9 @@
             if (!pairCode || pairCode.length !== 9) {
               throw new Error('Invalid code received');
             }
-            showStep2(pairCode);
+            // Include key inside the displayed code
+            const finalCode = pairCode + keyParam;
+            showStep2(finalCode);
           } catch (err) {
             console.error(err);
             alert('Error fetching code. Please try again.');
